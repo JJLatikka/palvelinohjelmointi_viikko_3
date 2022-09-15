@@ -1,5 +1,7 @@
 package sprbootjdbc;
 
+import java.util.Arrays;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -23,9 +25,17 @@ public class SprBootJdbcApplication {
 	public CommandLineRunner demo(CustomerDAO customerDAO) {
 
 		return (args) -> {
-			Customer c = new Customer("John Holmes");
-			System.out.println(c);
-			customerDAO.saveCustomer(c);
+
+			log.info("save a few customers of Ollivanders'");
+
+			Arrays.asList(new String[] { "Tom Valedro", "Rubeus Hagrid", "Severus Snape", "Lily Evans", "James Potter",
+					"Sirius Black", "Remus Lupin", "Harry Potter", "Hermione Granger", "Ron Weasley" }).stream()
+					.forEach((s) -> {
+						Customer c = new Customer(s);
+						log.info(c.toString());
+						customerDAO.saveCustomer(c);
+					});
+
 		};
 
 	}

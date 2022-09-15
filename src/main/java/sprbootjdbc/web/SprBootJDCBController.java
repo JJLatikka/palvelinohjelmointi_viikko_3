@@ -13,27 +13,27 @@ import sprbootjdbc.domain.CustomerDAO;
 
 @Controller
 public class SprBootJDCBController {
-	
+
 	@Autowired
-    private CustomerDAO customerDAO;
-	
-	@GetMapping("customerlist")
-    public String customerList(Model m) {	
-        List<Customer> c = customerDAO.findAllCustomers();
-        m.addAttribute("customers", c);
-        return "customerListTemplate";
-    }
+	private CustomerDAO customerDAO;
 
-    @GetMapping("addcustomer")
-    public String addStudent(Model m){
-    	m.addAttribute("customer", new Customer());
-        return "addCustomerTemplate";
-    }     
+	@GetMapping("customers")
+	public String customerList(Model m) {
+		List<Customer> c = customerDAO.findAllCustomers();
+		m.addAttribute("customers", c);
+		return "customerListTemplate";
+	}
 
-    @PostMapping("savecustomer")
-    public String saveCustomer(Customer c){
-        customerDAO.saveCustomer(c);
-        return "redirect:customerlist";
-    }     
+	@GetMapping("addcustomer")
+	public String addStudent(Model m) {
+		m.addAttribute("customer", new Customer());
+		return "addCustomerTemplate";
+	}
+
+	@PostMapping("savecustomer")
+	public String saveCustomer(Customer c) {
+		customerDAO.saveCustomer(c);
+		return "redirect:customers";
+	}
 
 }
