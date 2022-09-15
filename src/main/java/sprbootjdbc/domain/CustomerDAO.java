@@ -21,11 +21,24 @@ public class CustomerDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public void save(Customer c) {
+	public void saveCustomer(Customer c) {
 		String sql = "insert into customers(name) values(?)";
-		Object[] parameters = new Object[] { c.getName() };
-		jdbcTemplate.update(sql, parameters);
+		Object[] param = new Object[] { c.getName() };
+		jdbcTemplate.update(sql, param);
 
+	}
+	
+	public Customer findOneCustomer(int id) {
+		String sql = "select id, name from customers where id = ?";
+		Object[] param = new Object[] { id };
+		RowMapper<Customer> cRm = new CustomerRowMapper();
+		return jdbcTemplate.queryForObject(sql, cRm, param);
 	} 
+
+	public List<Customer> findAllCustomers() {
+		String sql = "select * from customers";
+		RowMapper<Customer> cRm = new CustomerRowMapper();
+		return jdbcTemplate.query(sql, cRm);
+	}
 
 }

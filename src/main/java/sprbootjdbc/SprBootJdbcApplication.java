@@ -23,7 +23,9 @@ public class SprBootJdbcApplication {
 	public CommandLineRunner demo(CustomerDAO customerDAO) {
 
 		return (args) -> {
-			customerDAO.save(new Customer("John Holmes"));
+			Customer c = new Customer("John Holmes");
+			System.out.println(c);
+			customerDAO.saveCustomer(c);
 		};
 
 	}

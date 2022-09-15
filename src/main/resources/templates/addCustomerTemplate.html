@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title><AddC>AddCustomer</AddC></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      body {background-color: #B2B2B2;} h1 {padding-left: 50px;}
+      div {width: 25%; margin: 25px;} input {background-color: #C4C4C4; float: right;}
+      select {background-color: #C4C4C4; margin-left: 25px;}
+    </style>
+  </head>
+  <body>
+	  <h1>Add customer</h1>
+      <form th:object="${customer}" th:action="@{savecustomer}" action="#" method="post">
+        <div><label for="name">Customer name</label><input type="text" id="name" th:field="*{name}"/></div>
+        <div style="margin: 50px;"><input type="submit" value="Save" style="float: left;"></input></div>
+      </form>
+  </body>
+</html>
