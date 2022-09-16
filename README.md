@@ -10,8 +10,7 @@ osaa tuota tietokannan taulujen luomiseen tarkoitettua schema.sql-tiedostoa hyö
 
 Toiseksi:
 
-Käytettäessä JdbcTemplate-rajapinnan tarjoamaa metodia 'queryForObject', metodin parametrit on syötettävä järjestyksessä: ( String ) sql-kysely,
-RowMapper-olio ja lopuksi sql-kyselyyn liitettävät ( Object[ ] ) parametrit, eli vaikka näin:
+Käytettäessä DAO-rajapinnan toteuttavassa luokassa JdbcTemplate-rajapinnan tarjoamaa metodia 'queryForObject', metodin parametrit on syötettävä järjestyksessä: ( String ) sql-kysely, RowMapper-olio ja lopuksi sql-kyselyyn liitettävät ( Object[ ] ) parametrit, eli vaikka näin:
 
 ```
 public Customer findOneCustomer(int id) {
